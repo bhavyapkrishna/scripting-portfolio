@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+<body>
+    <textarea id='result' cols='40' rows='30'>
+        0.00
+        </textarea>
+        <br>
+        <input id='b1' type='submit' value='1'>
+        <input id='b2' type='submit' value='2'>
+        <input id='b3' type='submit' value='3'>
+        <input id='b4' type='submit' value='4'>
+        <input id='b5' type='submit' value='5'>
+        <input id='b6' type='submit' value='6'>
+        <input id='b7' type='submit' value='7'>
+        <input id='b8' type='submit' value='8'>
+        <input id='b9' type='submit' value='9'>
+        <input id='enter' type='submit' value='enter'>
+        <br>
+        <input id='plus' type='submit' value='+'>
+        <script>
+        b1.onclick = function() { result.value += '1' }
+        b2.onclick = function() { result.value += '2' }
+        b3.onclick = function() { result.value += '3' }
+        b4.onclick = function() { result.value += '4' }
+        b5.onclick = function() { result.value += '5' }
+        b6.onclick = function() { result.value += '6' }
+        b7.onclick = function() { result.value += '7' }
+        b8.onclick = function() { result.value += '8' }
+        b9.onclick = function() { result.value += '9' }
+        enter.onclick = function() { result.value += "\n"; }
+        plus.onclick = function() { 
+          lines = result.value.split("\n");
+          // alert(lines[1]);
+          // alert(lines[2]);
+          // alert(lines.length);
+          newval = +lines[lines.length-1] + +lines[lines.length-2];
+          result.value += "+" + "\n" + newval + "\n";
+          result.scrollTop = result.scrollHeight;
+        }
+        </script>
+    
+</body>
+</html>
