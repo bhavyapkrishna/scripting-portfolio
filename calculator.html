@@ -1,48 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculator</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
 </head>
+
 <body>
+  <div class="main-container">
     <textarea id='result' cols='40' rows='30'>
-        0.00
-        </textarea>
-        <br>
-        <input id='b1' type='submit' value='1'>
-        <input id='b2' type='submit' value='2'>
-        <input id='b3' type='submit' value='3'>
-        <input id='b4' type='submit' value='4'>
-        <input id='b5' type='submit' value='5'>
-        <input id='b6' type='submit' value='6'>
-        <input id='b7' type='submit' value='7'>
-        <input id='b8' type='submit' value='8'>
-        <input id='b9' type='submit' value='9'>
-        <input id='enter' type='submit' value='enter'>
-        <br>
-        <input id='plus' type='submit' value='+'>
-        <script>
-        b1.onclick = function() { result.value += '1' }
-        b2.onclick = function() { result.value += '2' }
-        b3.onclick = function() { result.value += '3' }
-        b4.onclick = function() { result.value += '4' }
-        b5.onclick = function() { result.value += '5' }
-        b6.onclick = function() { result.value += '6' }
-        b7.onclick = function() { result.value += '7' }
-        b8.onclick = function() { result.value += '8' }
-        b9.onclick = function() { result.value += '9' }
-        enter.onclick = function() { result.value += "\n"; }
-        plus.onclick = function() { 
-          lines = result.value.split("\n");
-          // alert(lines[1]);
-          // alert(lines[2]);
-          // alert(lines.length);
-          newval = +lines[lines.length-1] + +lines[lines.length-2];
-          result.value += "+" + "\n" + newval + "\n";
-          result.scrollTop = result.scrollHeight;
-        }
-        </script>
-    
+      0.00
+      </textarea>
+    <br>
+    <input class='button' id='b1' type='submit' value='1'>
+    <input class='button' id='b2' type='submit' value='2'>
+    <input class='button' id='b3' type='submit' value='3'>
+    <input class='button' id='+' type='submit' value='+'>
+    <br>
+    <input class='button' id='b4' type='submit' value='4'>
+    <input class='button' id='b5' type='submit' value='5'>
+    <input class='button' id='b6' type='submit' value='6'>
+    <input class='button' id='-' type='submit' value='-'>
+    <br>
+    <input class='button' id='b7' type='submit' value='7'>
+    <input class='button' id='b8' type='submit' value='8'>
+    <input class='button' id='b9' type='submit' value='9'>
+    <input class='button' id='*' type='submit' value='*'>
+
+    <br>
+    <input class='button' id='b0' type='submit' value='0'>
+    <input class='decimal' id='.' type='submit' value='.'>
+    <input class='equals' id='=' type='submit' value='='>
+    <input class='button' id='/' type='submit' value='/'>
+    <br>
+
+    <input class='clear' id='clear' type='submit' value='Clear'>
+    <input class='clear-all' id='clear-all' type='submit' value='Clear All'>
+
+  <style>
+
+  </style>
+
+
+
+
+
+  <!-- fix buttons
+       add functions
+       add negatives
+       colors?-->
+
+  <script>
+
+    //operations
+    function add(num1, num2) {
+      return num1 + num2;
+    }
+
+    function subtract(num1, num2) {
+      return num1 - num2;
+    }
+
+    function multiply(num1, num2) {
+      return num1 * num2;
+    }
+
+    function divide(num1, num2) {
+      return num1 / num2;
+    }
+
+    //operate function
+    function operate(num1, operator, num2) {
+      switch (operator) {
+        case '+':
+          return add(Number(num1), Number(num2));
+        case '-':
+          return subtract(Number(num1), Number(num2));
+        case '*':
+          return multiply(Number(num1), Number(num2));
+        case '/':
+          return divide(Number(num1), Number(num2));
+      }
+    }
+
+    //update the calculator display
+    function updateDisplay(nextVal) {
+      result.value += `${nextVal}`;
+    }
+
+    const numBtns = document.querySelectorAll('.button');
+    const equalBtn = document.getElementsByClassName('equals');
+    const decBtn = document.getElementsByClassName('decimal');
+    const clearBtn = document.getElementsByClassName('clear');
+    const clearAllBtn = document.getElementsByClassName('clear-all');
+
+    numBtns.forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        updateDisplay(e.target.value);
+      })
+    });
+  </script>
+
 </body>
+
 </html>
