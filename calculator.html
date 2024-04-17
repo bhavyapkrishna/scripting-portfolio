@@ -8,48 +8,49 @@
 </head>
 
 <body>
-  <div class="main-container">
-    <textarea id='result' cols='40' rows='30'>
-      0.00
+  <div id="display-containers">
+    <div id="function-container">
+      <textarea id='display' cols='40' rows='15'></textarea>
+      <div id="buttons">
+        <br>
+        <input class='button' id='b1' type='submit' value='1'>
+        <input class='button' id='b2' type='submit' value='2'>
+        <input class='button' id='b3' type='submit' value='3'>
+        <input class='button' id='+' type='submit' value='+'>
+        <br>
+        <input class='button' id='b4' type='submit' value='4'>
+        <input class='button' id='b5' type='submit' value='5'>
+        <input class='button' id='b6' type='submit' value='6'>
+        <input class='button' id='-' type='submit' value='-'>
+        <br>
+        <input class='button' id='b7' type='submit' value='7'>
+        <input class='button' id='b8' type='submit' value='8'>
+        <input class='button' id='b9' type='submit' value='9'>
+        <input class='button' id='*' type='submit' value='*'>
+
+        <br>
+        <input class='button' id='b0' type='submit' value='0'>
+        <input class='button' id='.' type='submit' value='.'>
+        <input class='equals' id='=' type='submit' value='='>
+        <input class='button' id='/' type='submit' value='/'>
+        <br>
+
+        <input class='clear' id='clear' type='submit' value='Clear'>
+        <input class='clear-all' id='clear-all' type='submit' value='Clear All'>
+      </div>
+    </div>
+
+    <div id="result-container">
+      <textarea id='result' cols='40' rows='30'>
       </textarea>
-    <br>
-    <input class='button' id='b1' type='submit' value='1'>
-    <input class='button' id='b2' type='submit' value='2'>
-    <input class='button' id='b3' type='submit' value='3'>
-    <input class='button' id='+' type='submit' value='+'>
-    <br>
-    <input class='button' id='b4' type='submit' value='4'>
-    <input class='button' id='b5' type='submit' value='5'>
-    <input class='button' id='b6' type='submit' value='6'>
-    <input class='button' id='-' type='submit' value='-'>
-    <br>
-    <input class='button' id='b7' type='submit' value='7'>
-    <input class='button' id='b8' type='submit' value='8'>
-    <input class='button' id='b9' type='submit' value='9'>
-    <input class='button' id='*' type='submit' value='*'>
-
-    <br>
-    <input class='button' id='b0' type='submit' value='0'>
-    <input class='decimal' id='.' type='submit' value='.'>
-    <input class='equals' id='=' type='submit' value='='>
-    <input class='button' id='/' type='submit' value='/'>
-    <br>
-
-    <input class='clear' id='clear' type='submit' value='Clear'>
-    <input class='clear-all' id='clear-all' type='submit' value='Clear All'>
+    </div>
+  </div>
 
   <style>
-
+    #display-containers {
+      display: flex;
+    }
   </style>
-
-
-
-
-
-  <!-- fix buttons
-       add functions
-       add negatives
-       colors?-->
 
   <script>
 
@@ -84,21 +85,54 @@
       }
     }
 
-    //update the calculator display
-    function updateDisplay(nextVal) {
-      result.value += `${nextVal}`;
-    }
-
+    //query select all buttons
     const numBtns = document.querySelectorAll('.button');
-    const equalBtn = document.getElementsByClassName('equals');
-    const decBtn = document.getElementsByClassName('decimal');
-    const clearBtn = document.getElementsByClassName('clear');
-    const clearAllBtn = document.getElementsByClassName('clear-all');
+    const equalBtn = document.querySelector('.equals');
+    const decBtn = document.querySelector('.decimal');
+    const clearBtn = document.querySelector('.clear');
+    const clearAllBtn = document.querySelector('.clear-all');
 
+    //update the display box
     numBtns.forEach(function (btn) {
       btn.addEventListener('click', function (e) {
-        updateDisplay(e.target.value);
+        display.value += e.target.value;
       })
+    });
+
+    //clear the display box
+    clearBtn.addEventListener('click', () => {
+      display.value = '';
+    });
+
+    //clear everything
+    clearAllBtn.addEventListener('click', () => {
+      display.value = '';
+      result.value = '';
+    });
+
+    //compute result with '='
+    equalBtn.addEventListener('click', () => {
+      var prevVal = display.value;
+      var resVal;
+
+      //compute the results
+      var parts = display.value.split(/([+\-*\/])/);
+
+      //check for negatives
+      if (parts[0] === '' && parts[1] == '-') {
+        parts[0] = Number(parts[2] * -1);
+        parts[1] = parts[3];
+        parts[2] = parts[4];
+      }
+
+      var resVal = operate(parts[0], parts[1], parts[2]);
+      resVal = resVal.toFixed(2);
+
+      //update the result box
+      result.value += "\n" + "\t" + resVal;
+
+      //update the display box
+      display.value = resVal;
     });
   </script>
 
