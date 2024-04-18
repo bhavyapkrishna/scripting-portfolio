@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etch-a-Sketch</title>
+</head>
+
+<body>
+    <div class="header">
+        <h1>Etch-a-Sketch</h1>
+    </div>
+
+    <div id="sketch-area" class="container"></div>
+
+    <div id="btn-row">
+        <button id="clear-btn">Clear</button>
+    </div>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            background-color: aliceblue;
+        }
+
+        #sketch-area {
+            display: flex;
+            flex-wrap: wrap;
+            /*when flex element hits the end, wrap over to the next line*/
+            background-color: white;
+            margin: 100px auto;
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }
+
+        .cell {
+            border: 1px solid black;
+        }
+
+        #btn-row {
+            display: flex;
+            margin: 0 auto;
+            align-items: center;
+        }
+
+        button {
+            margin: 20px;
+            padding: 10px;
+            background-color: lightblue;
+            color: black;
+        }
+
+        .header {
+            margin: 0 auto;
+            padding-top: 100px;
+        }
+    </style>
+
+    <script>
+        const sketchArea = document.querySelector('#sketch-area');
+        const clearBtn = document.querySelector('#clear-btn')
+        //set board dimensions
+        const GRIDSIZE = 600;
+        const sketcharea = document.querySelector('#sketch-area');
+        sketchArea.style.width = `${GRIDSIZE}px`;
+        sketchArea.style.height = `${GRIDSIZE}px`;
+
+        //create the grid
+        let squares = 16;
+
+        function clearBoard() {
+            sketchArea.replaceChildren();
+            createGridCells();
+        }
+
+        function changeColor() {
+            this.style.backgroundColor = 'black';
+        }
+
+        function createGridCells() {
+            for (let i = 0; i < (squares * squares); i++) {
+                const gridCell = document.createElement('div');
+                gridCell.setAttribute('class', 'grid-cell');
+                gridCell.style.width = `${(GRIDSIZE / squares) - 2}px`; // -2 is for the border size (1px border each)
+                gridCell.style.height = `${(GRIDSIZE / squares) - 2}px`;
+                gridCell.setAttribute('class', 'cell');
+
+                sketchArea.appendChild(gridCell);
+
+                gridCell.addEventListener('mouseover', changeColor);
+
+            }
+        }
+
+        createGridCells();
+
+        clearBtn.addEventListener('click', () => clearBoard());
+
+
+    </script>
+</body>
+
+</html>
