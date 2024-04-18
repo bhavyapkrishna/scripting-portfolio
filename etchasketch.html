@@ -16,6 +16,7 @@
 
     <div id="btn-row">
         <button id="clear-btn">Clear</button>
+        <button id="size-btn">Set Size</button>
     </div>
 
     <style>
@@ -27,14 +28,11 @@
         body {
             display: flex;
             flex-direction: column;
-            background-color: aliceblue;
         }
 
         #sketch-area {
             display: flex;
             flex-wrap: wrap;
-            /*when flex element hits the end, wrap over to the next line*/
-            background-color: white;
             margin: 100px auto;
             margin-bottom: 20px;
             margin-top: 20px;
@@ -53,7 +51,6 @@
         button {
             margin: 20px;
             padding: 10px;
-            background-color: lightblue;
             color: black;
         }
 
@@ -65,7 +62,8 @@
 
     <script>
         const sketchArea = document.querySelector('#sketch-area');
-        const clearBtn = document.querySelector('#clear-btn')
+        const clearBtn = document.querySelector('#clear-btn');
+        const sizeBtn = document.querySelector('#size-btn');
         //set board dimensions
         const GRIDSIZE = 600;
         const sketcharea = document.querySelector('#sketch-area');
@@ -82,6 +80,15 @@
 
         function changeColor() {
             this.style.backgroundColor = 'black';
+        }
+
+        function setBoardSize() {
+            let size = window.prompt("Please enter the desired grid size", "16");
+            if (isNaN(parseInt(size)) || parseInt(size) <= 0 || parseInt(size) > 100) {
+                window.prompt("Please enter a valid grid size! Grids must be less than 100 x 100 pixels")
+            }
+            squares = parseInt(size);
+            clearBoard();
         }
 
         function createGridCells() {
@@ -102,6 +109,7 @@
         createGridCells();
 
         clearBtn.addEventListener('click', () => clearBoard());
+        sizeBtn.addEventListener('click', () => setBoardSize());
 
 
     </script>
