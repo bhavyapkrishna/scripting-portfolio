@@ -17,6 +17,7 @@
     <div id="btn-row">
         <button id="clear-btn">Clear</button>
         <button id="size-btn">Set Size</button>
+        <button id="color-btn">Random Color!</button>
     </div>
 
     <style>
@@ -64,6 +65,8 @@
         const sketchArea = document.querySelector('#sketch-area');
         const clearBtn = document.querySelector('#clear-btn');
         const sizeBtn = document.querySelector('#size-btn');
+        const colorBtn = document.querySelector('#color-btn');
+
         //set board dimensions
         const GRIDSIZE = 600;
         const sketcharea = document.querySelector('#sketch-area');
@@ -73,13 +76,22 @@
         //create the grid
         let squares = 16;
 
+        //set cell colors
+        var originalColor = true;
+
         function clearBoard() {
             sketchArea.replaceChildren();
             createGridCells();
         }
 
         function changeColor() {
-            this.style.backgroundColor = 'black';
+            if(originalColor == true) {
+                this.style.backgroundColor = 'black';
+            }
+
+            else {
+                this.style.backgroundColor = getRandomColor();
+            }
         }
 
         function setBoardSize() {
@@ -106,12 +118,24 @@
             }
         }
 
-        createGridCells();
+        function getRandomColor() {
+            let values = '0123456789ABCDEF';
+            var color = '#'
+
+            for (var i = 0; i < 6; i++) {
+                color += values[Math.floor(Math.random() * 16)];
+            }
+
+            console.log("random color: " + color);
+            return color;
+        }
+
 
         clearBtn.addEventListener('click', () => clearBoard());
         sizeBtn.addEventListener('click', () => setBoardSize());
+        colorBtn.addEventListener('click', () => { originalColor == true ? originalColor = false : originalColor = true});
 
-
+        createGridCells();
     </script>
 </body>
 
