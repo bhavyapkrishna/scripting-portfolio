@@ -9,7 +9,7 @@
 
 <body>
     <h1>Scripting Manual</h1>
-    <p>Input the manual you want to access (ex. bash, grep, seds), and the section within the manual you would like to read.</p>
+    <p>Input the manual you want to access from the <a href="https://man7.org/linux/man-pages/dir_all_by_section.html">man7 manual directory</a>, and the section within the manual you would like to read.</p>
     <p>This program will output the specific section of the manual you need!</p>
     <br>
     <form name="script-form" action="" method="get">

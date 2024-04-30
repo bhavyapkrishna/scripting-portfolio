@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scripting Portfolio</title>
+</head>
+
+<body>
+    <h1>Bhavya Krishna's Scripting Portfolio</h1>
+    <p>Here are the projects for my CSDS 285 scripting portfolio.</p>
+
+    <div>
+        <h2 style="text-align: center; font-style: italic;">JavaScript Calculator</h2>
+        <a href="calculator.html">
+            <p style="text-align: center;">Calculator Project</p>
+        </a>
+        <p style="text-align: center;">This is a modified version of the calculator code that was shared in class. <br>
+            I added the other arithmetic functions and made it functional with decimals and negative numbers.<br>
+            The images show the inputs and outputs of positive and negative addition.</p>
+        <div id="calc-pics">
+            <img src="images/calc1.png">
+            <img src="images/calc2.png">
+            <img src="images/calc3.png">
+            <img src="images/calc4.png">
+        </div>
+    </div>
+
+    <div>
+        <h2 style="text-align: center; font-style: italic;">JavaScript Sketchpad</h2>
+        <a href="sketchpad.html">
+            <p style="text-align: center;">Sketchpad Project</p>
+        </a>
+        <p style="text-align: center;">I created a sketchpad using JavaScript that allows you to draw on the screen's
+            board. <br>
+            You can resize the board to add more/less pixels, and change the color to a random color instead of black.
+            <br>
+        </p>
+        <div id="sp-pics">
+            <img src="images/sp1.png">
+            <img src="images/sp2.png">
+            <img src="images/sp3.png">
+            <img src="images/sp4.png">
+        </div>
+    </div>
+    <div>
+        <h2 style="text-align: center; font-style: italic;">Bash Sed Script</h2>
+        <a href="replacement.sh">
+            <p style="text-align: center;">Bash: Replacement Script</p>
+        </a>
+        <p style="text-align: center;">I used bash to come up with a replacement for every bolded word in this
+            awkscripts page: <a href="http://awkscripts.com/datw/out.feds.html">http://awkscripts.com/datw/out.feds.html</a><br>
+            If a word was inputted in the command line, I used that as the replacer, otherwise a default text was used. <br>
+            The images show the script, the command-line input, and the original/edited texts.
+        </p>
+        <div id="rep-pics">
+            <img src="images/rep1.png">
+            <img src="images/rep4.png">
+            <img src="images/rep2.png">
+            <img src="images/rep3.png">
+        </div>
+    </div>
+
+    <div>
+        <h2 style="text-align: center; font-style: italic;">Bash Awk Script</h2>
+        <a href="requests.sh">
+            <p style="text-align: center;">Requests Script</p>
+        </a>
+        <p style="text-align: center;">I used bash to write a script that counts and sorts all HTTP requests
+            made from the following awkscripts site: <a href="http://awkscripts.com/allcataccess">http://awkscripts.com/allcataccess</a> <br> The image shows the script and the output.
+        </p>
+        <div id="req-pics">
+            <img src="images/req1.png">
+        </div>
+    </div>
+
+    <div>
+        <div>
+            <h2 style="text-align: center; font-style: italic;">PHP Scripting Manual</h2>
+            <a href="manual.php">
+                <p style="text-align: center;">Scripting Manual</p>
+            </a>
+            <p style="text-align: center;">I used PHP to make a web page that allows the user to look at only specific sections of scripting manuals available 
+                on the <a href="https://man7.org/linux/man-pages/dir_all_by_section.html">man7 manual directory</a>. <br>
+                If the manual and/or section doesn't exist, it will notify the user that the title/section is invalid. Otherwise, it will print out the correct one. <br>
+                The images show the app, what the input manual/section are, and the section output.
+            </p>
+            <div id="man-pics">
+                <img src="images/man1.png">
+                <img src="images/man2.png">
+                <img src="images/man3.png">
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <div>
+            <h2 style="text-align: center; font-style: italic;">PHP GPA Calculator</h2>
+            <a href="gpacalculator.php">
+                <p style="text-align: center;">GPA Calculator</p>
+            </a>
+            <p style="text-align: center;">I used PHP and JavaScript to make a GPA calculator. The user can input class, credit hours, and grades <br>
+            and it will correctly output the semester GPA. ChatGPT helped me </p>
+            <div id="gpa-pics">
+                <img src="images/gpa1.png">
+                <img src="images/gpa2.png">
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <h2>"Proof" From Class</h2>
+        <p>- The calculator project is based on the source code provided in class: <a href="http://awkscripts.com/calc.html">original calculator code</a><br>
+        - The sketchpad project progressed from just a set-size sketchpad to adding the ability to change sizes, to adding the random color button.</p>
+        <div id="sp-pics-proof">
+            <img src="images/eas1.png">
+            <img src="images/eas2.png">
+            <img src="images/eas3.png">
+            <img src="images/eas4.png">
+        </div>
+        <br>
+        <p>- The awk script uses the <a href="http://awkscripts.com/allcataccess">allcataccess website</a>. It was inspired by the early TA challenges. </a> <br>
+        - The sed script uses the <a href="http://awkscripts.com/datw/out.feds.html">awkscripts federalist papers</a>. It was inspired by the early TA challenges.</p>
+
+        <p>- The PHP manual project uses the manual site we got in class for Challenge 10, but expands it to use any man7 page manual instead of only the bash one.
+            <br> ChatGPT helped me figure out the DOM elements/how to print text onto the webpage after parsing it from the manual.
+            <br> Challenge 10:
+        </p>
+        <div id="man-pics-proof">
+            <img src="images/ch10.png">
+        </div>
+        <br>
+        <p>- The PHP GPA calculator was meant to use some of the basic things we learned in challenge 5 (basic form manipulation).<br>
+            I used GPT to help a bit with taking the information from the form and with fixing the calculateGPA() funxtion, but I did all of the JavaScript by myself.</p>
+    </div>
+    <style>
+        img {
+            width: 25%;
+            height: 25%;
+        }
+
+        #calc-pics {
+            display: flex;
+        }
+
+        #sp-pics {
+            display: flex;
+        }
+
+        #rep-pics {
+            display: flex;
+        }
+
+        #req-pics {
+            text-align: center;
+        }
+
+        #man-pics {
+            text-align: center;
+        }
+
+        #gpa-pics {
+            text-align: center;
+        }
+
+        #sp-pics-proof {
+            display: flex;
+        }
+
+        #man-pics-proof {
+            text-align: center;
+        }
+    </style>
+</body>
+
+</html>
